@@ -1,0 +1,57 @@
+version: "3.8"
+services:
+  # MongoDB Service
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=supersecretpassword
+
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network
+
+  # Backend Service
+  backend:
+    build:
+      context: ./snmp_reader_backend
+      dockerfile: Dockerfile
+    container_name: backend
+    environment:
+      - MONGODB_URI=mongodb://admin:supersecretpassword@mongo:27017/?authSource=admin
+      - TZ=Europe/Berlin
+    ports:
+      - "161:161/udp"
+      - "2161:2161/udp"
+      - "8080:8080/tcp"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./snmp_reader_frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_BASE=http://localhost:8080/
+
+    networks:
+      - app-network
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  mongo_data:

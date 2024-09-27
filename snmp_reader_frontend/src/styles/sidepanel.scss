@@ -1,0 +1,80 @@
+@import "./colors.scss";
+
+.sidepanel {
+  width: 15vw;
+  height: 100vh;
+  background-color: $background;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  height: 25vh;
+  .logo {
+    background-color: white;
+    width: 12vw;
+    height: 14vh;
+
+    border-radius: 0.5vh;
+
+    background-image: url("../img/logo.jpg");
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .projectName {
+    font-weight: 300;
+    font-size: 1.5rem;
+  }
+}
+
+.menu {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  .active {
+    background-color: $primary50;
+
+    .indicator {
+      width: 0.3vw !important;
+    }
+  }
+  .option {
+    width: 100%;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.4rem;
+
+    transition: 0.5s;
+    cursor: pointer;
+    .indicator {
+      height: calc(100% + 3vh);
+      width: 0;
+      background-color: $accent;
+
+      transition: 0.1s;
+    }
+
+    &:hover {
+      background-color: $accent50;
+    }
+    .icon {
+      margin-right: 1vh;
+      position: relative;
+      top: 0.3vh;
+      margin-left: 8vh;
+      color: $accent;
+    }
+  }
+}

@@ -1,0 +1,592 @@
+@import "./colors.scss";
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.5vw
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background-color: $primary50;
+    border-radius: 0.5vw
+  }
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: $accent; 
+    border-radius: 0.5vw;
+  }
+  
+
+
+.printers{
+    width: 85vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .alertBox{
+        position: absolute; 
+        bottom: 10vh;
+        left: -50vw;
+        padding: 1.5vh 3vh;
+        border-radius: 0 1vh 1vh 0;
+        background-color: $accent;
+
+        transition: 0.5s;
+    }
+    .showAlertBox{
+        left: 0 !important;
+    }
+}
+
+.browsePrinters{
+    width: 42vw;
+    height: 100vh;
+    background-color: $background;
+    margin-left: 3vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .searchBar{
+        width: 100%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input{
+            padding: 0;
+            padding-left: 2vh;
+            width: 38%;
+            height: 30%;
+            border: none;
+            border-radius: 1vh 0 0 1vh;
+            background-color: $primary50;
+
+            color: white;
+            font-size: 1.5rem;
+
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+        .line{
+            height: 6vh;
+            width: 1vw;
+            text-align: center;
+            line-height: 6vh;
+            background-color: $primary50;
+
+            font-size: 3vh;
+        }
+        .button{
+            width: 3vw;
+            height: 30%;
+            background-color: $primary50;
+            border-radius: 0 1vh 1vh 0;
+            
+            line-height: 6.7vh;
+            font-size: 4vh;
+        }
+    }
+
+    .searchResult{
+        width: 90%;
+        min-height: 75%;
+        max-height: 75%;
+        overflow-y: scroll;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 4vh;
+    }
+}
+
+.printer{
+    width: 90%;
+    min-height: 14vh;
+    border-radius: 0.5vh;
+
+    background-color: $primary50;
+
+    .top{
+        width: 100%;
+        height: 35%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .info{
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            .id{
+                font-size: 1.2vw;
+            }
+
+            .tag{
+                background-color: $primary;
+                padding: 0.4vh 0.8vh;
+                border-radius: 0.3vh;
+                width: 4vw;
+                text-align: center;
+                font-size: 0.8vw;
+                color: $accent
+            }
+            .inactive{
+                background-color: rgb(95, 95, 95) !important;
+                color: white;
+            }
+        }
+
+        .options{
+            width: 5vw;
+            height: 35%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 3vh;
+            margin-top: 0.4vh;
+
+            div{
+                cursor: pointer;
+                transition: 0.5s;
+                &:hover{
+                    transform: scale(1.1);
+                    color: $accent
+                }
+            }
+        }
+    }
+
+    .middle{
+        height: 33%;
+        margin-left: 0.9vw;
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+
+        color: lightgray;
+
+    }
+
+    .bottom{
+        height: 32%;
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: gray;
+        margin-left: 0.9vw;
+
+        .OIDS{
+            font-size: 0.7rem;
+        }
+    }
+}
+
+
+.popUpWindow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    backdrop-filter: blur(0.2vh);
+    transition: 0.5s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 10;
+    .deleteWindow{
+        width: 15vw;
+        height: 15vh;
+
+        background-color: #030303b7;
+        padding: 0.5vh 1vh 0.5vh 1vh;
+        border-radius: 0.5vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        
+        .top{
+            width: 100%;
+            height: 4vh;
+            display: flex;
+            align-items:center;
+            justify-content: flex-end;
+
+            font-size: 4vh;
+            line-height: 5vh;
+            
+            .icon{
+                cursor: pointer;
+                transition: 0.2s;
+
+                &:hover{
+                    transform: scale(1.3);
+                }
+            }
+        }
+
+        .middle{
+            margin-top: -2vh;
+        }
+        .bottom{
+            margin-bottom: 1vh;
+            background-color: $accent;
+            padding: 0.6vh;
+            font-size: 1.8vh;
+            border-radius: 0.5vh;
+
+            transition: 0.2s;
+            cursor: pointer;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.popUpWindow-enter {
+    opacity: 0;
+    transform: scale(0.9);
+
+}
+.popUpWindow-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+/* Popup Exit Animation */
+.popUpWindow-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+.popUpWindow-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: 0.5s;
+}
+
+
+.editWindow{
+    width: 40vw;
+    height: 40vh;
+    background-color: $darkgray;
+
+    border-radius: 1vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    .cancelButton{
+        padding: 0.8vh 3vh;
+        background-color: $gray;
+        border-radius: 0.5vh;
+
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover{
+            transform: scale(1.1);
+            background-color: $gray;
+        }
+    }
+
+    .editing{
+        width: 100%;
+        height: 70%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        font-size: 2vh;
+        input{
+            border:none;
+            background-color: rgb(58, 58, 58);
+            padding: 1vh;
+            width: 40%;
+            font-size: 2vh;
+            &:focus{
+                border: none;
+                outline: none;
+                color: white;
+            }
+        }
+        .applyButton{
+            padding: 0.8vh 2vh;
+            border-radius: 0.5vh;
+            background-color: $accent;
+            transition: 0.5s;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .editOptions{
+        width: 100%;
+        height: 70%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        .top, .middle, .bottom{
+            height: 25%;
+            width: 100%;
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .option{
+            background-color: $accent;
+            height: 4vh;
+            width: 6vw;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            border-radius: 0.5vh;
+
+            transition: 0.5s;
+            cursor: pointer;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+       
+    }
+}
+
+.status{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vh;
+    .optionContainer{
+        width: 20vw;
+        display: flex;
+        justify-content: space-evenly;
+
+        div{
+            width: 5vw;
+            height: 4vh;
+            background-color: $accent;
+            
+            border-radius: 0.5vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+            transition: 0.5s;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+
+.addPrinters{
+    width: 37vw;
+    height: 100vh;
+    background-color: $background;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .autoAddPrinter{
+        width: 90%;
+        height: 70%;
+        background-color: $darkgray;
+        border-radius: 0.5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input{
+            margin-top: 1vh;
+            padding-left: 2vh;
+            width: 90%;
+            height: 60%;
+            border: none;
+            border-radius: 0.5vh;
+            background-color: $primary50;
+            font-size: 2vh;
+            color: white;
+
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+        .selectOptions{
+            width: 41.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            .versionChoose{
+                display: flex;
+                width: 5vw;
+                justify-content: space-evenly;
+                position: relative;
+                left: -1.5vh;
+                top: 1vh ;
+                .activeVersion{
+                    background-color: $accent;
+                }
+                div{
+                    width: 3vh;
+                    text-align: center;
+                    padding: 0.5vh;
+                    border-radius: 0.5vh;
+                    background-color: $gray;
+
+                    cursor: pointer;
+                    transition: 0.5s;
+                }
+
+                .active{
+                    background-color: $accent;
+
+                }
+            }
+            .switch {
+                
+                width: 5vw;
+                height: 4vh;
+                background-color: #ccc;
+                border-radius: 2vh;
+                position: relative;
+                top: 1vh;
+                left: -1vw;
+                cursor: pointer;
+                transition: background-color 0.3s;
+              
+                &.inactive {
+                  background-color: $gray;
+
+                  .switch-handle {
+                    left: calc(5vw - 3.55vw);
+                    background-color: rgb(79, 79, 79);
+
+                  }
+                }
+              
+                &.active {
+                    background-color: $primary;
+
+                
+                }
+              
+                .switch-handle {
+                  width: 7vh;
+                  height: 4vh;
+                  background-color: $accent;
+                  font-size: 1.4vh;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 2vh;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  transition: left 0.3s;
+              
+                  
+                }
+              }
+        }
+        .section{
+            width: 90%;
+            height: 8vh;
+            padding-top: 3vh;
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 2.2vh;
+
+            .lease{
+                height: 56%;
+            }
+            .modelInput{
+                text-transform: uppercase;
+            }
+        }
+
+        .oidsSection{
+            width: 91%;
+            padding-top: 3vh;
+
+            font-size: 2.2vh;
+
+            .gridContainer{
+                width: 100%;
+                height: 34vh;
+                margin-bottom: 2vh;
+
+                display: grid;
+                align-items: center;
+                justify-items: center;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                gap: 2vh;
+
+                .button{
+                    margin-top: 1vh;
+                    padding-left: 2vh;
+                    width: 90%;
+                    height: 60%;
+                    border-radius: 0.5vh;
+                    background-color: $accent;
+                    font-size: 2vh;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    transition: 0.5s;
+                    p{
+                        position: relative;
+                        left: -1vh;
+                    }
+
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+                }
+            }
+           
+        }
+        
+    }
+}

@@ -1,0 +1,297 @@
+@import "./colors.scss";
+
+
+.data{
+    width: 85vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+
+    .status{
+        position: absolute; 
+        bottom: 10vh;
+        left: -50vw;
+        padding: 3vh 3vh;
+        border-radius: 0 1vh 1vh 0;
+        background-color: $accent;
+
+        transition: 0.5s;
+    }
+    .showStatus{
+        left: 0 !important;
+    }
+    .dataContainer{
+        width: 90%;
+        height: 100%;
+
+        background-color: $background;
+        flex-direction: column;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 5vh;
+        
+        .displayData{
+            width: 95%;
+            height: 80%;
+            margin-bottom: 5%;
+            border-radius: 1vh;
+            background-color: $darkgray;
+
+            overflow-y: scroll;
+            
+            
+        }
+
+        .nav{
+            width: 90%;
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .button{
+                background-color: $gray;
+                height: 6vh;
+                padding: 0vh 3vh;
+                line-height: 6vh;
+                font-size: 1.5vh;
+                font-weight: 500;
+
+                border-radius: 0.5vh;
+
+                transition: 0.5s;
+                cursor: pointer;
+
+                .buttonIcon{
+                    font-size: 2vh;
+                    position: relative;
+                    top: 0.5vh;
+                    left: 0.2vw;
+                }
+
+                
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+            .button.download{
+                background-color: #4F6A42;
+            }
+            .button.delete{
+                background-color: $accent;
+            }
+        }
+
+        
+    }
+}
+
+.dataItem.topic{
+    border-radius: 1vh 1vh 0 0;
+    background-color: $primary50 !important;	
+   
+}
+.dataItem{
+    width: 99%;
+    height: 8%;
+    background-color: #6a424627;
+    
+
+    
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    align-items: center;
+    text-align: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    
+    
+    .dataItemFields{
+        padding: 1vh;
+        font-size: 1.5vh;
+
+    }
+    &:nth-child(even){
+        background-color: $primary50;
+    }
+}
+
+.searchBar{
+    width: 40%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    
+ 
+
+    input{
+        padding: 0;
+        padding-left: 2vh;
+        width: 85%;
+        height: 100%;
+        border: none;
+        border-radius: 0.5vh 0 0 0.5vh;
+        background-color: $primary50;
+
+        color: white;
+        font-size: 1.5rem;
+
+        &:focus{
+            border: none;
+            outline: none;
+        }
+    }
+    .line{
+        height: 100%;
+        width: 5%;
+        background-color: $primary50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5vh;
+    }
+    .searchIcon{
+        width: 10%;
+        height: 100%;
+        background-color: $primary50;
+        border-radius: 0 0.5vh 0.5vh 0;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5vh;
+
+        .icon{
+            position: relative;
+            left: -0.35vw;
+        }
+    }
+}
+
+
+.dataPopUpWindowContainer{
+    width: 100vw;
+    height: 100vh;
+    
+    position: absolute;
+    left: 0;
+
+    backdrop-filter: blur(0.2vh);
+
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dataPopUpWindow{
+        width: 35vw;
+        height: 35vh;
+        background-color: #030303b7;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    flex-direction: column;
+   
+    .options{
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+
+        .button{
+            background-color: $gray;
+        }
+    }
+
+        .button{
+            background-color: $accent;
+            height: 6vh;
+            padding: 0vh 3vh;
+            line-height: 6vh;
+            font-size: 1.9vh;
+            font-weight: 500;
+
+            border-radius: 0.5vh;
+
+            transition: 0.5s;
+            cursor: pointer;
+            
+            .buttonIcon{
+                font-size: 2vh;
+                position: relative;
+                top: 0.5vh;
+                left: 0.2vw;
+            }
+
+            
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        .serial{
+            display: flex;
+            height: 50%;
+            gap: 2vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            .options{
+                display: flex;
+
+                width: 30vw;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .button{
+                height: 5vh;
+                line-height: 5vh;
+                width: 3vw;
+                text-align: center;
+            }
+            input{
+                width: 10vw;
+                height: 5vh;
+                font-size: 2vh;
+                padding-left: 1vh;
+                border-radius: 0.5vh;
+                border: none;
+                background-color: $primary50;
+                color: white;
+
+                &:focus{
+                    border: none;
+                    outline: none;
+                }
+            }
+
+            .buttonStatus{
+                background-color: $accent;
+                height: 5vh;
+                padding: 0vh 3vh;
+                line-height: 5vh;
+                font-size: 1.9vh;
+                font-weight: 500;
+
+                border-radius: 0.5vh;
+
+
+                transition: 0.5s;
+                cursor: pointer;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
